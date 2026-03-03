@@ -1,0 +1,74 @@
+{
+  "info": {
+    "_postman_id": "12c45124-aab2-4eb4-bd6e-8ad127e140b3",
+    "name": "Pruebas de Humo - API Inicio",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "52885654",
+    "_collection_link": "https://go.postman.co/collection/52885654-12c45124-aab2-4eb4-bd6e-8ad127e140b3?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "New Request",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Verificar que la respuesta sea 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Tiempo de respuesta menor a 4000ms\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(4000);\r",
+              "});\r",
+              "\r",
+              "//Verificar que body no está vacío\r",
+              "pm.test(\"Verificar que el cuerpo de la respuesta no esté vacío\", function () {\r",
+              "    pm.expect(pm.response.text()).to.not.be.empty;\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Content-Type está presente\", function () {\r",
+              "    pm.response.to.have.header(\"Content-Type\");\r",
+              "});\r",
+              "\r",
+              "//Verificar tamaño de respuesta string\r",
+              "pm.test(\"Tamaño de respuesta menor a 10000 bytes\", function () {\r",
+              "    pm.expect(pm.response.text().length).to.be.below(10000);\r",
+              "    });"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://k51qryqov3.execute-api.ap-southeast-2.amazonaws.com/prod/makes/ckl2phsabijs71623vk0?modelsPage=1",
+          "protocol": "https",
+          "host": [
+            "k51qryqov3",
+            "execute-api",
+            "ap-southeast-2",
+            "amazonaws",
+            "com"
+          ],
+          "path": [
+            "prod",
+            "makes",
+            "ckl2phsabijs71623vk0"
+          ],
+          "query": [
+            {
+              "key": "modelsPage",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
